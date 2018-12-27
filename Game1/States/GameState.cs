@@ -16,9 +16,9 @@ namespace MenuStart.States
 {
     public class GameState : State
     {
-        GraphicsDeviceManager graphics;
+        //GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        float timer;
+        //float timer;
         private List<Component> _components;
 
         protected Player player;

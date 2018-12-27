@@ -18,6 +18,7 @@ namespace Game1.States
         private List<Component> _components;
 
         protected Player player;
+        //protected Player player;
 
         private Texture2D background;
         private SpriteFont Fail;
