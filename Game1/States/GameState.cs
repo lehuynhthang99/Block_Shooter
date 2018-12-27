@@ -98,8 +98,17 @@ namespace MenuStart.States
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            StreamWriter streamWriter = new StreamWriter("Content\\Save\\Save.txt");
-            streamWriter.Write("A");
+            StreamWriter streamWriter = new StreamWriter("Save.txt");
+            streamWriter.WriteLine(player._Score);
+            streamWriter.WriteLine(player._position.X);
+            streamWriter.WriteLine(player._position.Y);
+            foreach (Block block in player.Blocks)
+            {
+                streamWriter.WriteLine(block._position.X);
+                streamWriter.WriteLine(block._position.Y);
+                streamWriter.WriteLine(block._life);
+                streamWriter.WriteLine(block._type);
+            }
             streamWriter.Close();
         }
 

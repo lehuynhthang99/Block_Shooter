@@ -17,7 +17,7 @@ namespace MenuStart.Sprite
         public bool _HasDied = false;
         float _UFOmove;
         Vector2 _prevPos;
-        Vector2 _position;
+        public Vector2 _position;
         Vector2 _direction;
         Vector2 _origin;
         Vector2 _border;
@@ -26,7 +26,7 @@ namespace MenuStart.Sprite
         GraphicsDevice _graphicsDevice;
 
         List<Ball> Balls = new List<Ball>();
-        List<Block> Blocks = new List<Block>();
+        public List<Block> Blocks = new List<Block>();
 
         Ball CloneBall;
 
@@ -65,6 +65,27 @@ namespace MenuStart.Sprite
             _origin = new Vector2(5, _arrowTexture.Height / 2f);
             CloneBall = new Ball(_ballTexture, _position, 456, 545, _border);
 
+        }
+
+        public Player(Texture2D[] blockTexture, Texture2D ballTexture, SpriteFont font, Texture2D arrowTexture, Texture2D borderTexture, SpriteFont scorefont,
+            Texture2D UFOTexture, GraphicsDevice graphicsDevice,int Score, Vector2 Position, List<Block> blocks)
+        {
+            _graphicsDevice = graphicsDevice;
+            _borderTexture = borderTexture;
+            _blockTexture = blockTexture;
+            _ballTexture = ballTexture;
+            _fontContent = font;
+            _arrowTexture = arrowTexture;
+            _scorefontContent = scorefont;
+            _UFOTexture = UFOTexture;
+            _border = new Vector2((graphicsDevice.PresentationParameters.BackBufferWidth - _borderTexture.Width) / 2f + 8,
+                (graphicsDevice.PresentationParameters.BackBufferHeight - _borderTexture.Height) / 2f + 145);
+            _position = Position;
+            _prevPos = _position * 1f;
+            _origin = new Vector2(5, _arrowTexture.Height / 2f);
+            CloneBall = new Ball(_ballTexture, _position, 456, 545, _border);
+            Blocks = blocks;
+            _Score = Score;
         }
 
         public void Update(GameTime gameTime)

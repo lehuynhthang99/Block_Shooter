@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MenuStart.Sprite
 {
-    class Block : Sprite
+    public class Block : Sprite
     {
         public int _life;
         public int _type;

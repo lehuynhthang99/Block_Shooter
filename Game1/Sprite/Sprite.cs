@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MenuStart.Sprite
 {
-    class Sprite: ICloneable
+    public class Sprite: ICloneable
     {
         public Texture2D _texture;
         public Vector2 _position;
