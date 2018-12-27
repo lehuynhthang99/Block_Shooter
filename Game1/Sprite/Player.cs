@@ -13,7 +13,7 @@ namespace MenuStart.Sprite
     {
         int _move = 0;
         float _Timer = 0f;
-        int _Score = 0;
+        public int _Score = 0;
         public bool _HasDied = false;
         float _UFOmove;
         Vector2 _prevPos;

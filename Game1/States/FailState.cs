@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using MenuStart.Sprite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace Game1.States
     class FailState : State
     {
         private List<Component> _components;
+
+        protected Player player;
 
         private Texture2D background;
         private SpriteFont Fail;
@@ -74,6 +77,9 @@ namespace Game1.States
             spriteBatch.Draw(background, new Vector2((spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth - background.Width) / 2, 0), Color.White);
 
             spriteBatch.DrawString(Fail, "You Fail", new Vector2((spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth) / 2, 10), Color.White);
+
+            string str = "YOUR SCORE: " + player._Score.ToString();
+
 
             foreach (var component in _components)
                 component.Draw(gameTime, spriteBatch);
