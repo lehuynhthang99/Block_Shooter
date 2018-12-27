@@ -30,10 +30,8 @@ namespace MenuStart
             graphics.PreferredBackBufferHeight = 1080;
             graphics.PreferredBackBufferWidth = 1920;
 
-<<<<<<< HEAD
-=======
             graphics.ApplyChanges();
->>>>>>> parent of d4d8928... ver7
+
             //graphics.IsFullScreen = true;
             IsMouseVisible = true;
         }
@@ -49,6 +47,7 @@ namespace MenuStart
             // TODO: Add your initialization logic here
             IsMouseVisible = true;
 
+            
             base.Initialize();
 
 
@@ -63,7 +62,10 @@ namespace MenuStart
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _currentState = new MenuState(this, graphics.GraphicsDevice, Content);
+            int DeviceWidth = GraphicsDevice.DisplayMode.Width;
+            int DeviceHeight = GraphicsDevice.DisplayMode.Height;
+
+            _currentState = new MenuState(this, graphics.GraphicsDevice, Content, DeviceWidth, DeviceHeight);
 
             // TODO: use this.Content to load your game content here
         }

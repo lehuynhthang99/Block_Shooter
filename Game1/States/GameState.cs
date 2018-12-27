@@ -19,13 +19,17 @@ namespace MenuStart.States
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         float timer;
+        public int _deviceWidth, _deviceHeight;
+
         private List<Component> _components;
 
         protected Player player;
         Texture2D _background;
 
-        public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
+        public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content, int DeviceWidth, int DeviceHeight) : base(game, graphicsDevice, content)
         {
+            _deviceHeight = DeviceHeight;
+            _deviceWidth = DeviceWidth;
             spriteBatch = new SpriteBatch(graphicsDevice);
 
             Texture2D[] BlockTextures = new Texture2D[5];
@@ -59,7 +63,11 @@ namespace MenuStart.States
             var buttonSave = new Button(buttonTexture, buttonFont)
             {
                 Position = Vector2.Zero,
-                Text = "Save"
+                Text = "Save",
+                Height = graphicsDevice.PresentationParameters.BackBufferHeight,
+                Width = graphicsDevice.PresentationParameters.BackBufferWidth,
+                DeviceHeight = _deviceHeight,
+                DeviceWidth = _deviceWidth,
             };
 
             buttonSave.Click += buttonSave_Click;
@@ -105,10 +113,11 @@ namespace MenuStart.States
 
             Vector2 tmp = new Vector2(1920f/_background.Width, 1080f/ _background.Height);
             spriteBatch.Draw(_background, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, tmp, SpriteEffects.None, 1f);
-            player.Draw(spriteBatch);
 
             foreach (var component in _components)
                 component.Draw(gameTime, spriteBatch);
+
+            player.Draw(spriteBatch);
 
             spriteBatch.End();
 
@@ -126,7 +135,7 @@ namespace MenuStart.States
                 _game.Exit();
 
             if(player._HasDied==true)
-                _game.ChangeState(new FailState(_game, _graphicsDevice, _content, player));
+                _game.ChangeState(new FailState(_game, _graphicsDevice, _content, player, _deviceWidth, _deviceHeight));
 
             // TODO: Add your update logic here
 
