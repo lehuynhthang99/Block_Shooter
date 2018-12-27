@@ -91,6 +91,90 @@ namespace MenuStart.States
             };
         }
 
+        public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content, int DeviceWidth, int DeviceHeight, StreamReader strReader) : base(game, graphicsDevice, content)
+        {
+            _deviceHeight = DeviceHeight;
+            _deviceWidth = DeviceWidth;
+            spriteBatch = new SpriteBatch(graphicsDevice);
+
+            Texture2D[] BlockTextures = new Texture2D[5];
+
+            BlockTextures[0] = content.Load<Texture2D>("Game/rec");
+            BlockTextures[1] = content.Load<Texture2D>("Game/tri1");
+            BlockTextures[2] = content.Load<Texture2D>("Game/tri2");
+            BlockTextures[3] = content.Load<Texture2D>("Game/tri3");
+            BlockTextures[4] = content.Load<Texture2D>("Game/tri4");
+
+            var buttonTexture = content.Load<Texture2D>("Controls/buttons");
+            var buttonFont = content.Load<SpriteFont>("Fonts/Font");
+
+            Texture2D BallTexture = content.Load<Texture2D>("Game/Bullet");
+
+            SpriteFont fontContent = content.Load<SpriteFont>("Fonts/File");
+
+            SpriteFont scorefontContent = content.Load<SpriteFont>("Fonts/Score");
+
+            Texture2D arrowTexture = content.Load<Texture2D>("Game/Arrow-Transparent");
+
+            Texture2D borderTexture = content.Load<Texture2D>("Game/border");
+
+            Texture2D background = content.Load<Texture2D>("Backgrounds/background2");
+
+            Texture2D UFOTexture = content.Load<Texture2D>("Game/UFO");
+
+            int score = int.Parse(strReader.ReadLine());
+            Vector2 playerPos = new Vector2(float.Parse(strReader.ReadLine()), float.Parse(strReader.ReadLine()));
+            string Temp;
+            List<Block> blocks = new List<Block>();
+            while ((Temp = strReader.ReadLine()) != null)
+            {
+                    Vector2 position = new Vector2(float.Parse(Temp), float.Parse(strReader.ReadLine()));
+                    int life = int.Parse(strReader.ReadLine());
+                    int type = int.Parse(strReader.ReadLine());
+                    Block block = new Block(BlockTextures[type], fontContent, position, type, life);
+                    blocks.Add(block);
+
+            }
+            strReader.Close();
+            player = new Player(BlockTextures, BallTexture, fontContent, arrowTexture, borderTexture, scorefontContent, UFOTexture, graphicsDevice, 
+                score,
+                playerPos,
+                blocks
+                );
+            _background = background;
+
+            var buttonSave = new Button(buttonTexture, buttonFont)
+            {
+                Position = Vector2.Zero,
+                Text = "Save",
+                Height = graphicsDevice.PresentationParameters.BackBufferHeight,
+                Width = graphicsDevice.PresentationParameters.BackBufferWidth,
+                DeviceHeight = _deviceHeight,
+                DeviceWidth = _deviceWidth,
+            };
+
+            buttonSave.Click += buttonSave_Click;
+
+            var buttonMenu = new Button(buttonTexture, buttonFont)
+            {
+                Position = new Vector2(50, 50),
+                Text = "Menu",
+                Height = graphicsDevice.PresentationParameters.BackBufferHeight,
+                Width = graphicsDevice.PresentationParameters.BackBufferWidth,
+                DeviceHeight = _deviceHeight,
+                DeviceWidth = _deviceWidth,
+            };
+
+            buttonMenu.Click += buttonMenu_Click;
+
+            _components = new List<Component>()
+            {
+                buttonSave,
+                buttonMenu
+            };
+        }
+
+
         private void buttonMenu_Click(object sender, EventArgs e)
         {
             _game.ChangeState(new MenuState(_game, _graphicsDevice, _content, _deviceWidth, _deviceHeight));

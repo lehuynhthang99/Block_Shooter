@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MenuStart.Controls;
+using MenuStart.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -84,7 +86,8 @@ namespace MenuStart.States
 
         private void LoadGameButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Load Game"); 
+            StreamReader streamReader = new StreamReader("Save.txt");
+            _game.ChangeState(new GameState(_game, _graphicsDevice, _content, _deviceWidth, _deviceHeight, streamReader));
         }
 
         private void NewGameButton_Click(object sender, EventArgs e)

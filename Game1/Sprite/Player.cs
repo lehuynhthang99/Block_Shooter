@@ -86,6 +86,13 @@ namespace MenuStart.Sprite
             CloneBall = new Ball(_ballTexture, _position, 456, 545, _border);
             Blocks = blocks;
             _Score = Score;
+
+            _Timer = 0;
+            AddBall();
+            _CreateBlock = false;
+            _BlockUpdate = false;
+            _BallUpdate = false;
+            _DirectionUpdate = true;
         }
 
         public void Update(GameTime gameTime)
