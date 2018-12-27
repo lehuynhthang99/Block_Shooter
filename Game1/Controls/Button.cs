@@ -16,8 +16,9 @@ namespace MenuStart.Controls
         private MouseState _currentMouse;
         private MouseState _previousMouse;
 
+        public int Height, Width;
+
         private SpriteFont _font;
-        public int Width, Height;
 
         private bool _isHovering;
 
@@ -83,7 +84,9 @@ namespace MenuStart.Controls
             _previousMouse = _currentMouse;
             _currentMouse = Mouse.GetState();
 
-            var mouseRectangle = new Rectangle(_currentMouse.X, _currentMouse.Y, 1, 1);
+            Vector2 tmp = new Vector2(Width/1366f, Height/768f);
+            var mouseRectangle = new Rectangle((int)Math.Round(_currentMouse.X*tmp.X), (int)Math.Round(_currentMouse.Y*tmp.Y), 1, 1);
+            System.Diagnostics.Debug.WriteLine(((int)Math.Round(_currentMouse.X*tmp.X)).ToString() + " " + ((int)Math.Round(_currentMouse.Y*tmp.Y)).ToString());
 
             _isHovering = false;
 
