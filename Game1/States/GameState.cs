@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Game1.States;
 using MenuStart.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -42,11 +43,11 @@ namespace MenuStart.States
 
             Texture2D borderTexture = content.Load<Texture2D>("Game/border");
 
-            Texture2D background = content.Load<Texture2D>("Game/background");
+            Texture2D background = content.Load<Texture2D>("Backgrounds/background2");
 
             Texture2D UFOTexture = content.Load<Texture2D>("Game/UFO");
 
-            player = new Player(BlockTextures, BallTexture, fontContent, arrowTexture, borderTexture, scorefontContent, UFOTexture);
+            player = new Player(BlockTextures, BallTexture, fontContent, arrowTexture, borderTexture, scorefontContent, UFOTexture, graphicsDevice);
             _background = background;
         }
 
@@ -77,9 +78,11 @@ namespace MenuStart.States
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 _game.Exit();
 
+            if(player._HasDied == true)
+                _game.ChangeState(new FailState(_game, _graphicsDevice, _content));
+
             // TODO: Add your update logic here
-            /* foreach (var sprite in _sprites)
-                 sprite.Update(gameTime, _sprites);*/
+
             player.Update(gameTime);
 
             //base.Update(gameTime);
