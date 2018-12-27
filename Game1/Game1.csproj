@@ -50,7 +50,6 @@
     <Compile Include="Sprite\Block.cs" />
     <Compile Include="Sprite\Player.cs" />
     <Compile Include="Sprite\Sprite.cs" />
-    <Compile Include="States\FailState.cs" />
     <Compile Include="States\GameState.cs" />
     <Compile Include="States\MenuState.cs" />
     <Compile Include="States\State.cs" />

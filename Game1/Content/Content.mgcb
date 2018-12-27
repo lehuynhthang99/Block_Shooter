@@ -25,18 +25,6 @@
 /processorParam:TextureFormat=Color
 /build:Backgrounds/Background.jpg
 
-#begin Backgrounds/background2.jpg
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Backgrounds/background2.jpg
-
 #begin Backgrounds/Block_Shooter.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -60,13 +48,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Controls/buttons.png
-
-#begin Fonts/Fail.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:Fonts/Fail.spritefont
 
 #begin Fonts/File.spritefont
 /importer:FontDescriptionImporter
@@ -100,6 +81,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Game/Arrow-Transparent.png
+
+#begin Game/background.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Game/background.jpg
 
 #begin Game/border.png
 /importer:TextureImporter
