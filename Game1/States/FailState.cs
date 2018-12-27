@@ -17,13 +17,14 @@ namespace Game1.States
     {
         private List<Component> _components;
 
-        protected Player player;
+        protected Player _player;
 
         private Texture2D background;
         private SpriteFont Fail;
 
-        public FailState(MenuStart.Game1 game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
+        public FailState(MenuStart.Game1 game, GraphicsDevice graphicsDevice, ContentManager content, Player player) : base(game, graphicsDevice, content)
         {
+            _player = player;
             background = _content.Load<Texture2D>("Backgrounds/Background2");
             Fail = _content.Load<SpriteFont>("Fonts/Fail");
 
@@ -78,7 +79,9 @@ namespace Game1.States
 
             spriteBatch.DrawString(Fail, "You Fail", new Vector2((spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth) / 2, 10), Color.White);
 
-            //string str = "YOUR SCORE: " + player._Score.ToString();
+            string str = "YOUR SCORE  " + _player._Score.ToString();
+            Vector2 posStr = _player._scorefontContent.MeasureString(str);
+            spriteBatch.DrawString(_player._scorefontContent, str, new Vector2(10,10), Color.White);
 
 
             foreach (var component in _components)

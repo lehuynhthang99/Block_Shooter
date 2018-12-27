@@ -30,6 +30,7 @@ namespace MenuStart
             graphics.PreferredBackBufferHeight = 1080;
             graphics.PreferredBackBufferWidth = 1920;
 
+            graphics.ApplyChanges();
             //graphics.IsFullScreen = true;
             IsMouseVisible = true;
         }
@@ -45,6 +46,7 @@ namespace MenuStart
             // TODO: Add your initialization logic here
             IsMouseVisible = true;
 
+            
             base.Initialize();
 
 

@@ -108,7 +108,7 @@ namespace MenuStart.States
                 _game.Exit();
 
             if(player._HasDied==true)
-                _game.ChangeState(new FailState(_game, _graphicsDevice, _content));
+                _game.ChangeState(new FailState(_game, _graphicsDevice, _content, player));
 
             // TODO: Add your update logic here
 
