@@ -59,7 +59,7 @@ namespace MenuStart
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _currentState = new MenuState(this, graphics.GraphicsDevice, Content);
+            _currentState = new MenuState(this, GraphicsDevice, Content);
 
             // TODO: use this.Content to load your game content here
         }

@@ -33,6 +33,8 @@ namespace MenuStart.States
                 Text = "New Game",
                 Height = graphicsDevice.PresentationParameters.BackBufferHeight,
                 Width = graphicsDevice.PresentationParameters.BackBufferWidth,
+                DeviceHeight = graphicsDevice.DisplayMode.Height,
+                DeviceWidth = graphicsDevice.DisplayMode.Width,
             };
 
             newGameButton.Click += NewGameButton_Click;
