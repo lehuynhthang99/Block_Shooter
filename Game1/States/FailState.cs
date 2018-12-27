@@ -78,7 +78,7 @@ namespace Game1.States
 
             spriteBatch.DrawString(Fail, "You Fail", new Vector2((spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth) / 2, 10), Color.White);
 
-            string str = "YOUR SCORE: " + player._Score.ToString();
+            //string str = "YOUR SCORE: " + player._Score.ToString();
 
 
             foreach (var component in _components)
