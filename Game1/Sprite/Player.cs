@@ -46,7 +46,6 @@ namespace MenuStart.Sprite
         Texture2D _borderTexture;
         Texture2D _UFOTexture;
 
-        GraphicsDevice _graphicsDevice;
 
         public Player(Texture2D[] blockTexture, Texture2D ballTexture, SpriteFont font, Texture2D arrowTexture, Texture2D borderTexture, SpriteFont scorefont,
             Texture2D UFOTexture, GraphicsDevice graphicsDevice)
