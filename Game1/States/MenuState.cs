@@ -86,8 +86,13 @@ namespace MenuStart.States
 
         private void LoadGameButton_Click(object sender, EventArgs e)
         {
-            StreamReader streamReader = new StreamReader("Save.txt");
-            _game.ChangeState(new GameState(_game, _graphicsDevice, _content, _deviceWidth, _deviceHeight, streamReader));
+            string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\BlockShooter\Save.txt";
+            StreamReader streamReader = new StreamReader(Path);
+            
+
+            if (File.ReadAllText(Path) != "") _game.ChangeState(new GameState(_game, _graphicsDevice, _content, _deviceWidth, _deviceHeight, streamReader));
+            else _game.ChangeState(new GameState(_game, _graphicsDevice, _content, _deviceWidth, _deviceHeight));
+
         }
 
         private void NewGameButton_Click(object sender, EventArgs e)

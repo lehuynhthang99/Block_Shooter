@@ -186,7 +186,9 @@ namespace MenuStart.States
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            StreamWriter streamWriter = new StreamWriter("Save.txt");
+            string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\BlockShooter\Save.txt";
+
+            StreamWriter streamWriter = new StreamWriter(Path);
             streamWriter.WriteLine(player._Score);
             streamWriter.WriteLine(player._position.X);
             streamWriter.WriteLine(player._position.Y);

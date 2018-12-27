@@ -30,10 +30,9 @@ namespace MenuStart
             graphics.PreferredBackBufferHeight = 1080;
             graphics.PreferredBackBufferWidth = 1920;
 
-            graphics.ApplyChanges();
-
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
             IsMouseVisible = true;
+            graphics.ApplyChanges();
         }
 
         /// <summary>
