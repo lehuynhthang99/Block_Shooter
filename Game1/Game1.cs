@@ -1,8 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MenuStart.States;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Game1
+namespace MenuStart
 {
     /// <summary>
     /// This is the main type for your game.
@@ -12,10 +13,25 @@ namespace Game1
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        private State _currentState;
+
+        public State _nextState;
+
+        public void ChangeState(State state)
+        {
+            _nextState = state;
+        }
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            graphics.PreferredBackBufferHeight = 1080;
+            graphics.PreferredBackBufferWidth = 1920;
+
+            //graphics.IsFullScreen = true;
+            IsMouseVisible = true;
         }
 
         /// <summary>
@@ -27,8 +43,11 @@ namespace Game1
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            IsMouseVisible = true;
 
             base.Initialize();
+
+
         }
 
         /// <summary>
@@ -39,6 +58,8 @@ namespace Game1
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            _currentState = new MenuState(this, graphics.GraphicsDevice, Content);
 
             // TODO: use this.Content to load your game content here
         }
@@ -59,8 +80,16 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            if (_nextState != null)
+            {
+                _currentState = _nextState;
+
+                _nextState = null;
+            }
+
+            _currentState.Update(gameTime);
+
+            _currentState.PostUpdate(gameTime);
 
             // TODO: Add your update logic here
 
@@ -76,6 +105,8 @@ namespace Game1
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
+            _currentState.Draw(gameTime, spriteBatch);
 
             base.Draw(gameTime);
         }

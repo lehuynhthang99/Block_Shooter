@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Game1
+namespace MenuStart
 {
 #if WINDOWS || LINUX
     /// <summary>
