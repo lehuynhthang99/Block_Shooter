@@ -72,10 +72,28 @@ namespace MenuStart.States
 
             buttonSave.Click += buttonSave_Click;
 
+            var buttonMenu = new Button(buttonTexture, buttonFont)
+            {
+                Position = new Vector2(50,50),
+                Text = "Menu",
+                Height = graphicsDevice.PresentationParameters.BackBufferHeight,
+                Width = graphicsDevice.PresentationParameters.BackBufferWidth,
+                DeviceHeight = _deviceHeight,
+                DeviceWidth = _deviceWidth,
+            };
+
+            buttonMenu.Click += buttonMenu_Click;
+
             _components = new List<Component>()
             {
                 buttonSave,
+                buttonMenu
             };
+        }
+
+        private void buttonMenu_Click(object sender, EventArgs e)
+        {
+            _game.ChangeState(new MenuState(_game, _graphicsDevice, _content, _deviceWidth, _deviceHeight));
         }
 
         private void buttonSave_Click(object sender, EventArgs e)

@@ -52,7 +52,7 @@ namespace Game1.States
             {
                 Position = new Vector2((graphicsDevice.PresentationParameters.BackBufferWidth - buttonTexture.Width) / 2,
                     (graphicsDevice.PresentationParameters.BackBufferHeight + buttonTexture.Height) / 2),
-                Text = "Exit",
+                Text = "Quit",
                 Height = graphicsDevice.PresentationParameters.BackBufferHeight,
                 Width = graphicsDevice.PresentationParameters.BackBufferWidth,
                 DeviceHeight = _deviceHeight,
