@@ -16,8 +16,12 @@ namespace MenuStart.States
 
         private Texture2D background, gameName;
 
-        public MenuState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
+        public int _deviceWidth, _deviceHeight;
+
+        public MenuState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content, int DeviceWidth, int DeviceHeight) : base(game, graphicsDevice, content)
         {
+            _deviceHeight = DeviceHeight;
+            _deviceWidth = DeviceWidth;
             
             background = _content.Load<Texture2D>("Backgrounds/Background");
             gameName = _content.Load<Texture2D>("Backgrounds/Block_Shooter");
@@ -33,6 +37,8 @@ namespace MenuStart.States
                 Text = "New Game",
                 Height = graphicsDevice.PresentationParameters.BackBufferHeight,
                 Width = graphicsDevice.PresentationParameters.BackBufferWidth,
+                DeviceHeight =_deviceHeight,
+                DeviceWidth = _deviceWidth,
             };
 
             newGameButton.Click += NewGameButton_Click;
@@ -44,6 +50,8 @@ namespace MenuStart.States
                 Text = "Load Game",
                 Height = graphicsDevice.PresentationParameters.BackBufferHeight,
                 Width = graphicsDevice.PresentationParameters.BackBufferWidth,
+                DeviceHeight = _deviceHeight,
+                DeviceWidth = _deviceWidth,
             };
 
             loadGameButton.Click += LoadGameButton_Click;
@@ -55,6 +63,8 @@ namespace MenuStart.States
                 Text = "Quit Game",
                 Height = graphicsDevice.PresentationParameters.BackBufferHeight,
                 Width = graphicsDevice.PresentationParameters.BackBufferWidth,
+                DeviceHeight = _deviceHeight,
+                DeviceWidth = _deviceWidth,
             };
 
             quitGameButton.Click += QuitGameButton_Click;
@@ -79,7 +89,7 @@ namespace MenuStart.States
 
         private void NewGameButton_Click(object sender, EventArgs e)
         {
-            _game.ChangeState(new GameState(_game, _graphicsDevice, _content));
+            _game.ChangeState(new GameState(_game, _graphicsDevice, _content, _deviceWidth, _deviceHeight));
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
