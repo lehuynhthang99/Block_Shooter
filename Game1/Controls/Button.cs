@@ -85,7 +85,7 @@ namespace MenuStart.Controls
             _previousMouse = _currentMouse;
             _currentMouse = Mouse.GetState();
 
-            Vector2 tmp = new Vector2(Width/1366f, Height/768f);
+            Vector2 tmp = new Vector2(Width*1f/DeviceWidth, Height*1f/DeviceHeight);
             var mouseRectangle = new Rectangle((int)Math.Round(_currentMouse.X*tmp.X), (int)Math.Round(_currentMouse.Y*tmp.Y), 1, 1);
 
             _isHovering = false;

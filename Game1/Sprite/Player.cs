@@ -41,7 +41,7 @@ namespace MenuStart.Sprite
         Texture2D[] _blockTexture;
         Texture2D _ballTexture;
         SpriteFont _fontContent;
-        SpriteFont _scorefontContent;
+        public SpriteFont _scorefontContent;
         Texture2D _arrowTexture;
         Texture2D _borderTexture;
         Texture2D _UFOTexture;
