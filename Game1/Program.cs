@@ -16,9 +16,7 @@ namespace MenuStart
         {
             using (var game = new Game1())
                 game.Run();
-            //Demo2
         }
     }
 #endif
-    //demo1
 }
