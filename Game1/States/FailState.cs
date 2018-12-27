@@ -16,17 +16,14 @@ namespace Game1.States
     class FailState : State
     {
         private List<Component> _components;
-        public int _deviceWidth, _deviceHeight;
 
         protected Player _player;
 
         private Texture2D background;
         private SpriteFont Fail;
 
-        public FailState(MenuStart.Game1 game, GraphicsDevice graphicsDevice, ContentManager content, Player player, int DeviceWidth, int DeviceHeight) : base(game, graphicsDevice, content)
+        public FailState(MenuStart.Game1 game, GraphicsDevice graphicsDevice, ContentManager content, Player player) : base(game, graphicsDevice, content)
         {
-            _deviceHeight = DeviceHeight;
-            _deviceWidth = DeviceWidth;
             _player = player;
             background = _content.Load<Texture2D>("Backgrounds/Background2");
             Fail = _content.Load<SpriteFont>("Fonts/Fail");
@@ -42,8 +39,6 @@ namespace Game1.States
                 Text = "Restart",
                 Height = graphicsDevice.PresentationParameters.BackBufferHeight,
                 Width = graphicsDevice.PresentationParameters.BackBufferWidth,
-                DeviceHeight = _deviceHeight,
-                DeviceWidth = _deviceWidth,
             };
 
             restartGameButton.Click += restartGameButton_Click;
@@ -55,8 +50,6 @@ namespace Game1.States
                 Text = "Exit",
                 Height = graphicsDevice.PresentationParameters.BackBufferHeight,
                 Width = graphicsDevice.PresentationParameters.BackBufferWidth,
-                DeviceHeight = _deviceHeight,
-                DeviceWidth = _deviceWidth,
             };
 
             exitGameButton.Click += exitGameButton_Click;
@@ -75,7 +68,7 @@ namespace Game1.States
 
         private void restartGameButton_Click(object sender, EventArgs e)
         {
-            _game.ChangeState(new GameState(_game, _graphicsDevice, _content, _deviceWidth, _deviceHeight));
+            _game.ChangeState(new GameState(_game, _graphicsDevice, _content));
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -88,7 +81,7 @@ namespace Game1.States
 
             string str = "YOUR SCORE  " + _player._Score.ToString();
             Vector2 posStr = _player._scorefontContent.MeasureString(str);
-            spriteBatch.DrawString(_player._scorefontContent, str, new Vector2((spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth - posStr.X)/2f,200), Color.White);
+            spriteBatch.DrawString(_player._scorefontContent, str, new Vector2(10,10), Color.White);
 
 
             foreach (var component in _components)

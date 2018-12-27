@@ -30,6 +30,10 @@ namespace MenuStart
             graphics.PreferredBackBufferHeight = 1080;
             graphics.PreferredBackBufferWidth = 1920;
 
+<<<<<<< HEAD
+=======
+            graphics.ApplyChanges();
+>>>>>>> parent of d4d8928... ver7
             //graphics.IsFullScreen = true;
             IsMouseVisible = true;
         }
