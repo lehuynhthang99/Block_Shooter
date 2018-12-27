@@ -84,10 +84,12 @@ namespace Game1.States
 
             spriteBatch.Draw(background, new Vector2((spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth - background.Width) / 2, 0), Color.White);
 
-            spriteBatch.DrawString(Fail, "You Fail", new Vector2((spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth) / 2, 10), Color.White);
+            Vector2 posStr = Fail.MeasureString("You fail");
+
+            spriteBatch.DrawString(Fail, "You Fail", new Vector2((spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth - posStr.X) / 2f, 10), Color.White);
 
             string str = "YOUR SCORE  " + _player._Score.ToString();
-            Vector2 posStr = _player._scorefontContent.MeasureString(str);
+            posStr = _player._scorefontContent.MeasureString(str);
             spriteBatch.DrawString(_player._scorefontContent, str, new Vector2((spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth - posStr.X)/2f,200), Color.White);
 
 

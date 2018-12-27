@@ -62,7 +62,8 @@ namespace MenuStart.States
 
             var buttonSave = new Button(buttonTexture, buttonFont)
             {
-                Position = Vector2.Zero,
+                Position = new Vector2((graphicsDevice.PresentationParameters.BackBufferWidth - borderTexture.Width) / 2f - 10 - buttonTexture.Width,
+                    graphicsDevice.PresentationParameters.BackBufferHeight / 2f - buttonTexture.Height - 10),
                 Text = "Save",
                 Height = graphicsDevice.PresentationParameters.BackBufferHeight,
                 Width = graphicsDevice.PresentationParameters.BackBufferWidth,
@@ -74,7 +75,8 @@ namespace MenuStart.States
 
             var buttonMenu = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(50,50),
+                Position = new Vector2((graphicsDevice.PresentationParameters.BackBufferWidth - borderTexture.Width) / 2f - 10 - buttonTexture.Width,
+                    graphicsDevice.PresentationParameters.BackBufferHeight / 2f + 10),
                 Text = "Menu",
                 Height = graphicsDevice.PresentationParameters.BackBufferHeight,
                 Width = graphicsDevice.PresentationParameters.BackBufferWidth,
@@ -145,7 +147,8 @@ namespace MenuStart.States
 
             var buttonSave = new Button(buttonTexture, buttonFont)
             {
-                Position = Vector2.Zero,
+                Position = new Vector2((graphicsDevice.PresentationParameters.BackBufferWidth - borderTexture.Width)/2f - 10 - buttonTexture.Width,
+                    graphicsDevice.PresentationParameters.BackBufferHeight/2f - buttonTexture.Height - 10),
                 Text = "Save",
                 Height = graphicsDevice.PresentationParameters.BackBufferHeight,
                 Width = graphicsDevice.PresentationParameters.BackBufferWidth,
@@ -157,7 +160,8 @@ namespace MenuStart.States
 
             var buttonMenu = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(50, 50),
+                Position = new Vector2((graphicsDevice.PresentationParameters.BackBufferWidth - borderTexture.Width) / 2f - 10 - buttonTexture.Width,
+                    graphicsDevice.PresentationParameters.BackBufferHeight / 2f + 10),
                 Text = "Menu",
                 Height = graphicsDevice.PresentationParameters.BackBufferHeight,
                 Width = graphicsDevice.PresentationParameters.BackBufferWidth,

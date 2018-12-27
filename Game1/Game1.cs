@@ -32,7 +32,7 @@ namespace MenuStart
 
             graphics.ApplyChanges();
 
-            //graphics.IsFullScreen = true;
+            graphics.IsFullScreen = true;
             IsMouseVisible = true;
         }
 
