@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MenuStart.Controls;
 using MenuStart.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -16,6 +18,7 @@ namespace MenuStart.States
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         float timer;
+        private List<Component> _components;
 
         protected Player player;
         Texture2D _background;
@@ -32,6 +35,9 @@ namespace MenuStart.States
             BlockTextures[3] = content.Load<Texture2D>("Game/tri3");
             BlockTextures[4] = content.Load<Texture2D>("Game/tri4");
 
+            var buttonTexture = content.Load<Texture2D>("Controls/buttons");
+            var buttonFont = content.Load<SpriteFont>("Fonts/Font");
+
             Texture2D BallTexture = content.Load<Texture2D>("Game/Bullet");
 
             SpriteFont fontContent = content.Load<SpriteFont>("Fonts/File");
@@ -46,8 +52,28 @@ namespace MenuStart.States
 
             Texture2D UFOTexture = content.Load<Texture2D>("Game/UFO");
 
-            player = new Player(BlockTextures, BallTexture, fontContent, arrowTexture, borderTexture, scorefontContent, UFOTexture);
+            player = new Player(BlockTextures, BallTexture, fontContent, arrowTexture, borderTexture, scorefontContent, UFOTexture, graphicsDevice);
             _background = background;
+
+            var buttonSave = new Button(buttonTexture, buttonFont)
+            {
+                Position = Vector2.Zero,
+                Text = "Save"
+            };
+
+            buttonSave.Click += buttonSave_Click;
+
+            _components = new List<Component>()
+            {
+                buttonSave,
+            };
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            StreamWriter streamWriter = new StreamWriter("Content\\Save\\Save.txt");
+            streamWriter.Write("A");
+            streamWriter.Close();
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -61,6 +87,9 @@ namespace MenuStart.States
             Vector2 tmp = new Vector2(1920f/_background.Width, 1080f/ _background.Height);
             spriteBatch.Draw(_background, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, tmp, SpriteEffects.None, 1f);
             player.Draw(spriteBatch);
+
+            foreach (var component in _components)
+                component.Draw(gameTime, spriteBatch);
 
             spriteBatch.End();
 
@@ -81,6 +110,8 @@ namespace MenuStart.States
             /* foreach (var sprite in _sprites)
                  sprite.Update(gameTime, _sprites);*/
             player.Update(gameTime);
+            foreach (Component component in _components)
+                component.Update(gameTime);
 
             //base.Update(gameTime);
         }
