@@ -19,7 +19,6 @@ namespace MenuStart.States
         public MenuState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
         {
             
-
             background = _content.Load<Texture2D>("Backgrounds/Background");
             gameName = _content.Load<Texture2D>("Backgrounds/Block_Shooter");
 
@@ -32,6 +31,8 @@ namespace MenuStart.States
                 Position = new Vector2((graphicsDevice.PresentationParameters.BackBufferWidth - buttonTexture.Width) / 2,
                     (graphicsDevice.PresentationParameters.BackBufferHeight - buttonTexture.Height) / 2),
                 Text = "New Game",
+                Height = graphicsDevice.PresentationParameters.BackBufferHeight,
+                Width = graphicsDevice.PresentationParameters.BackBufferWidth,
             };
 
             newGameButton.Click += NewGameButton_Click;
@@ -41,6 +42,8 @@ namespace MenuStart.States
                 Position = new Vector2((graphicsDevice.PresentationParameters.BackBufferWidth - buttonTexture.Width) / 2,
                     (graphicsDevice.PresentationParameters.BackBufferHeight + buttonTexture.Height) / 2),
                 Text = "Load Game",
+                Height = graphicsDevice.PresentationParameters.BackBufferHeight,
+                Width = graphicsDevice.PresentationParameters.BackBufferWidth,
             };
 
             loadGameButton.Click += LoadGameButton_Click;
@@ -50,6 +53,8 @@ namespace MenuStart.States
                 Position = new Vector2((graphicsDevice.PresentationParameters.BackBufferWidth - buttonTexture.Width) / 2,
                     (graphicsDevice.PresentationParameters.BackBufferHeight + 3*buttonTexture.Height) / 2),
                 Text = "Quit Game",
+                Height = graphicsDevice.PresentationParameters.BackBufferHeight,
+                Width = graphicsDevice.PresentationParameters.BackBufferWidth,
             };
 
             quitGameButton.Click += QuitGameButton_Click;

@@ -23,6 +23,7 @@ namespace MenuStart.Sprite
         Vector2 _border;
         float _rotation = MathHelper.ToRadians(-90f);
         float rotattionVelocity = 2f;
+        GraphicsDevice _graphicsDevice;
 
         List<Ball> Balls = new List<Ball>();
         List<Block> Blocks = new List<Block>();
@@ -64,6 +65,7 @@ namespace MenuStart.Sprite
             _prevPos = _position * 1f;
             _origin = new Vector2(5, _arrowTexture.Height / 2f);
             CloneBall = new Ball(_ballTexture, _position, 456, 545, _border);
+
         }
 
         public void Update(GameTime gameTime)
@@ -198,7 +200,8 @@ namespace MenuStart.Sprite
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_borderTexture, new Vector2((1920 - _borderTexture.Width) / 2f, (1080 - _borderTexture.Height) / 2f), Color.White);
+            spriteBatch.Draw(_borderTexture, new Vector2((_graphicsDevice.PresentationParameters.BackBufferWidth - _borderTexture.Width) / 2f, 
+                (_graphicsDevice.PresentationParameters.BackBufferHeight - _borderTexture.Height) / 2f), Color.White);
             foreach (var Block in Blocks)
             {
                 Block.Draw(spriteBatch);
