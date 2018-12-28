@@ -17,7 +17,7 @@ namespace MenuStart.Sprite
 
         public Vector2 _border;
 
-        protected float _speed = 15f;
+        protected float _speed = 11.5f;
 
         public Ball(Texture2D texture, Vector2 position, int width, int height, Vector2 border)
             : base(texture, position)
@@ -424,6 +424,19 @@ namespace MenuStart.Sprite
 
                 }
             }
+
+            if (_direction.X <= -0.99)
+            {
+                if (_direction.Y > 0) _direction.Y = 0.05f;
+                else _direction.Y = -0.05f;
+            }
+            else if (_direction.X >= 0.99)
+            {
+                if (_direction.Y > 0) _direction.Y = 0.05f;
+                else _direction.Y = -0.05f;
+            }
+            if (_direction != Vector2.Zero) _direction.Normalize();
+
         }
 
         private void BallMove()

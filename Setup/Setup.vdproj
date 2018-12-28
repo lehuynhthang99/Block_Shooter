@@ -129,7 +129,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3571742AD39149869CB3E5F9E05FCACC"
+        "MsmKey" = "8:_2FDD6AF54EC04440B197A6BBBD78BF14"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1006,6 +1006,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
     }
@@ -1532,10 +1540,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3571742AD39149869CB3E5F9E05FCACC"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2FDD6AF54EC04440B197A6BBBD78BF14"
             {
-            "SourcePath" = "8:C:\\Users\\Bui Tuan Minh\\Downloads\\2730371_fiZ_icon.ico"
-            "TargetName" = "8:2730371_fiZ_icon.ico"
+            "SourcePath" = "8:..\\Icon\\2730371_DrP_icon.ico"
+            "TargetName" = "8:2730371_DrP_icon.ico"
             "Tag" = "8:"
             "Folder" = "8:_EFD7E0AB05F74B48B41A68F021A4F951"
             "Condition" = "8:"
@@ -2953,7 +2961,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:BlockShooter"
         "ProductCode" = "8:{7690B832-A18D-4D65-A608-462725D74A30}"
-        "PackageCode" = "8:{29B2FE96-FAE3-4C4C-B584-063E000AC87D}"
+        "PackageCode" = "8:{8D03BAF7-4FEC-4104-B1C8-EE47B3C195AC}"
         "UpgradeCode" = "8:{B14ADE6B-75FB-496B-BBDA-1989FD6B6B08}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -3084,7 +3092,7 @@
             "Target" = "8:_0D1DED832B3F4B419472797335563934"
             "Folder" = "8:_98A2E405DCEB4A5B99719AFFE1E829E4"
             "WorkingFolder" = "8:_EFD7E0AB05F74B48B41A68F021A4F951"
-            "Icon" = "8:_3571742AD39149869CB3E5F9E05FCACC"
+            "Icon" = "8:_2FDD6AF54EC04440B197A6BBBD78BF14"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_5B3050D2406849FBA7980A61D31D6E1F"
